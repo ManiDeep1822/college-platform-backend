@@ -9,15 +9,9 @@ const options: swaggerJsdoc.Options = {
       version: "1.0.0",
       description: "Backend API documentation for College Discovery Platform",
     },
-
-    servers: [
-      {
-        url: "http://localhost:3000",
-      },
-    ],
   },
 
-  apis: ["./app/api/**/*.ts"],
+  apis: ["app/api/**/*.ts"],
 };
 
 export const swaggerSpec = swaggerJsdoc(options);
