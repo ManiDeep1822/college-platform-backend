@@ -9,9 +9,69 @@ const options: swaggerJsdoc.Options = {
       version: "1.0.0",
       description: "Backend API documentation for College Discovery Platform",
     },
+
+    servers: [
+      {
+        url: "https://college-platform-backend-three.vercel.app",
+      },
+    ],
+
+    paths: {
+      "/api/auth/login": {
+        post: {
+          summary: "Login user",
+          tags: ["Authentication"],
+
+          requestBody: {
+            required: true,
+
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+
+                  properties: {
+                    email: {
+                      type: "string",
+                    },
+
+                    password: {
+                      type: "string",
+                    },
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            "200": {
+              description: "Login successful",
+            },
+
+            "401": {
+              description: "Invalid credentials",
+            },
+          },
+        },
+      },
+
+      "/api/colleges": {
+        get: {
+          summary: "Get all colleges",
+          tags: ["Colleges"],
+
+          responses: {
+            "200": {
+              description: "Successfully fetched colleges",
+            },
+          },
+        },
+      },
+    },
   },
 
-  apis: ["app/api/**/*.ts"],
+  apis: [],
 };
 
 export const swaggerSpec = swaggerJsdoc(options);
